@@ -1,13 +1,12 @@
 import streamlit as st
 import requests
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Set page layout and title
 st.set_page_config(page_title="Eco-Friendly Gadget Dashboard", layout="wide")
 st.title("Eco-Friendly Gadget Dashboard")
 
-# 1. **City Selection with Scrollbar (Indian Cities)**
+# City selection
 indian_cities = {
     "Delhi": {"lat": 28.6139, "lon": 77.2090},
     "Mumbai": {"lat": 19.0760, "lon": 72.8777},
@@ -19,19 +18,10 @@ indian_cities = {
     "Ahmedabad": {"lat": 23.0225, "lon": 72.5714},
     "Lucknow": {"lat": 26.8467, "lon": 80.9462},
     "Surat": {"lat": 21.1702, "lon": 72.8311},
-    "Jaipur": {"lat": 26.9124, "lon": 75.7873},
-    "Chandigarh": {"lat": 30.7333, "lon": 76.7794},
-    "Indore": {"lat": 22.7196, "lon": 75.8577},
-    "Bhopal": {"lat": 23.2599, "lon": 77.4126},
-    "Nagpur": {"lat": 21.1458, "lon": 79.0882},
-    "Patna": {"lat": 25.5941, "lon": 85.1376},
-    "Vadodara": {"lat": 22.3072, "lon": 73.1812},
-    "Coimbatore": {"lat": 11.0168, "lon": 76.9558},
-    "Visakhapatnam": {"lat": 17.6869, "lon": 83.2185},
-    "Madurai": {"lat": 9.9193, "lon": 78.1193}
 }
-
 selected_city = st.selectbox("Select City", list(indian_cities.keys()))
+city_info = indian_cities[selected_city]
+
 
 # Function to fetch Unsplash images
 def fetch_city_image(city):
